@@ -6,6 +6,7 @@ const Users = require("./auth-model");
 const {
   validateCredentials,
   checkUsernameExists,
+  loginCheckUsername,
 } = require("./auth-middleware");
 
 router.post(
@@ -28,8 +29,8 @@ router.post(
 
 router.post(
   "/login",
+  loginCheckUsername,
   validateCredentials,
-  checkUsernameExists,
   (req, res, next) => {
     const { username, password } = req.body;
 
