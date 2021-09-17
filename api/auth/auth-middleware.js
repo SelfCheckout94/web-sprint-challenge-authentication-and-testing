@@ -16,7 +16,7 @@ const checkUsernameExists = async (req, res, next) => {
   const existingUser = await db("users")
     .where("username", req.body.username)
     .first();
-  if (!existingUser) {
+  if (existingUser) {
     next({
       status: 401,
       message: "username taken",
