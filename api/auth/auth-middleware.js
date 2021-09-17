@@ -26,22 +26,7 @@ const checkUsernameExists = async (req, res, next) => {
   }
 };
 
-const loginCheckUsername = async (req, res, next) => {
-  const existingUser = await db("users")
-    .where("username", req.body.username)
-    .first();
-  if (existingUser) {
-    next();
-  } else {
-    next({
-      status: 401,
-      message: "invalid credentials",
-    });
-  }
-};
-
 module.exports = {
   validateCredentials,
   checkUsernameExists,
-  loginCheckUsername,
 };
