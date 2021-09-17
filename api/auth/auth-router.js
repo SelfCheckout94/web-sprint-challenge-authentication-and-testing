@@ -38,7 +38,7 @@ router.post(
       if (user && bcrypt.compareSync(password, user.password)) {
         const token = buildToken(user);
         res.status(200).json({
-          message: `Welcome, ${username}`,
+          message: `welcome, ${username}`,
           token,
         });
       } else {
